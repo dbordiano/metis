@@ -1,0 +1,36 @@
+---
+description: Use Metis UX/UI and frontend commands and skills in this project.
+globs: 
+alwaysApply: true
+---
+
+# Metis commands and skills
+
+This project includes **Metis**: research-backed UX/UI and frontend commands for AI agents.
+
+## Command definitions
+
+When the user asks for CSS audits, Atomic Design scaffolding, cognitive bias checks, data viz (Tufte), ecommerce UX (Baymard), or motion/accessibility:
+
+1. **Resolve command from Metis**  
+   Prefer the command JSONs in this project. They live at:
+   - `metis/commands/css-commands.json`
+   - `metis/commands/atomic-design-commands.json`
+   - `metis/commands/cognitive-bias-commands.json`
+   - `metis/commands/data-viz-commands.json`
+   - `metis/commands/ecommerce-ux-commands.json`
+   - `metis/commands/motion-commands.json`
+
+2. **Use parameters and examples**  
+   Each command has `parameters`, `example_input`, `example_output`, and `empirical_sources`. Follow that structure when running or suggesting the command.
+
+3. **Utils (optional)**  
+   If the user wants to run the actual utilities, use Node from the project root:
+   - CSS audit: `node metis/utils/css-audit.js <path-to-css>`
+   - Atomic scaffold: `node metis/utils/atomic-scaffold.js <Name> <atom|molecule|organism>` or `node metis/utils/atomic-scaffold.js --output <path>`
+   - Baymard audit: `node metis/utils/baymard-audit.js <path-to-html>`
+
+4. **Docs and templates**  
+   Reference `metis/docs/` for best practices and `metis/templates/` for starter files (reset, design tokens, product grid, small multiples).
+
+Do not invent command parameters; use the ones defined in the Metis JSON files.

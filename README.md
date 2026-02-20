@@ -14,20 +14,30 @@
 
 ## Installation
 
-1. Clone this repo:
+### Option 1: Download zip into your project (recommended)
 
-   ```bash
-   git clone https://github.com/dbordiano/metis.git
-   ```
+From your **project root** (where you want a `metis` folder):
 
-2. Enter the package and (optionally) install dependencies:
+```bash
+curl -sL https://github.com/dbordiano/metis/archive/refs/heads/main.tar.gz | tar -xzf - && mv metis-main metis
+```
 
-   ```bash
-   cd metis
-   npm install   # optional; utils run with Node alone
-   ```
+Then wire up Cursor or Claude: see **[Integrating Metis with Cursor and Claude](docs/INTEGRATION.md)**.
 
-3. **Node.js** v18+ is recommended for running the utilities.
+**One command with Cursor setup:** (downloads Metis and copies rules into `.cursor/rules/`)
+
+```bash
+curl -sL https://raw.githubusercontent.com/dbordiano/metis/main/scripts/install.sh | bash -s -- --cursor
+```
+
+### Option 2: Clone
+
+```bash
+git clone https://github.com/dbordiano/metis.git
+cd metis
+```
+
+**Node.js** v18+ is recommended for running the utilities (optional; no `npm install` required).
 
 ## Quick Start
 
@@ -104,8 +114,8 @@ node utils/baymard-audit.js path/to/page.html
 
 ## AI Tool Integration
 
-- **Cursor**: Add Metis `commands/*.json` to your rules or commands directory; reference them in custom instructions so the agent can suggest or run these commands.
-- **Claude / other agents**: Use each command’s `parameters`, `example_input`, and `example_output` to build tool definitions or system prompts.
+- **Cursor**: Run the install script with `--cursor` (see above) or copy `metis/cursor/metis-commands.mdc` and `metis/commands/*.json` into `.cursor/rules/`. Full steps: [docs/INTEGRATION.md](docs/INTEGRATION.md).
+- **Claude**: Paste the contents of `metis/claude/instructions.md` into your project’s Project Instructions (or Custom Instructions). Full steps: [docs/INTEGRATION.md](docs/INTEGRATION.md).
 
 ## Empirical Sources
 
