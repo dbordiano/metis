@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" width="800" height="600" class="tufte-small-multiples-template">
+  <title>Tufte-style small multiples template (2x2)</title>
+  <g transform="translate(0,0)">
+    <rect x="20" y="20" width="360" height="260" fill="none" stroke="#333" stroke-width="1"/>
+    <path d="M 40 240 L 120 200 L 200 180 L 280 120 L 360 80" fill="none" stroke="#333" stroke-width="1.5"/>
+    <text x="40" y="14" font-size="12" font-family="Georgia, serif" fill="#333">100</text>
+    <text x="40" y="284" font-size="12" font-family="Georgia, serif" fill="#333">0</text>
+    <text x="180" y="298" font-size="11" font-family="Georgia, serif" fill="#333">Series A</text>
+  </g>
+  <g transform="translate(400,0)">
+    <rect x="20" y="20" width="360" height="260" fill="none" stroke="#333" stroke-width="1"/>
+    <path d="M 40 80 L 120 100 L 200 140 L 280 180 L 360 220" fill="none" stroke="#333" stroke-width="1.5"/>
+    <text x="40" y="14" font-size="12" font-family="Georgia, serif" fill="#333">100</text>
+    <text x="40" y="284" font-size="12" font-family="Georgia, serif" fill="#333">0</text>
+    <text x="180" y="298" font-size="11" font-family="Georgia, serif" fill="#333">Series B</text>
+  </g>
+  <g transform="translate(0,300)">
+    <rect x="20" y="20" width="360" height="260" fill="none" stroke="#333" stroke-width="1"/>
+    <path d="M 40 140 L 120 160 L 200 140 L 280 160 L 360 140" fill="none" stroke="#333" stroke-width="1.5"/>
+    <text x="40" y="14" font-size="12" font-family="Georgia, serif" fill="#333">100</text>
+    <text x="40" y="284" font-size="12" font-family="Georgia, serif" fill="#333">0</text>
+    <text x="180" y="298" font-size="11" font-family="Georgia, serif" fill="#333">Series C</text>
+  </g>
+  <g transform="translate(400,300)">
+    <rect x="20" y="20" width="360" height="260" fill="none" stroke="#333" stroke-width="1"/>
+    <path d="M 40 220 L 120 180 L 200 120 L 280 100 L 360 80" fill="none" stroke="#333" stroke-width="1.5"/>
+    <text x="40" y="14" font-size="12" font-family="Georgia, serif" fill="#333">100</text>
+    <text x="40" y="284" font-size="12" font-family="Georgia, serif" fill="#333">0</text>
+    <text x="180" y="298" font-size="11" font-family="Georgia, serif" fill="#333">Series D</text>
+  </g>
+</svg>

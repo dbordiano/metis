@@ -1,0 +1,117 @@
+{
+  "category": "CSS",
+  "name": "css-commands",
+  "version": "1.0.0",
+  "description": "CSS-related commands for AI agents",
+  "commands": [
+    {
+      "name": "css-audit",
+      "description": "Analyzes CSS for specificity, performance, and maintainability issues. Suggests fixes using modern CSS features (e.g., :where(), container queries).",
+      "parameters": [
+        {
+          "name": "file",
+          "type": "string",
+          "description": "Path to the CSS file or code snippet to audit.",
+          "required": true
+        }
+      ],
+      "example_input": {
+        "file": "styles/main.css"
+      },
+      "example_output": {
+        "issues": [
+          {
+            "type": "high-specificity",
+            "selector": ".header nav a",
+            "fix": "Use :where(.header, nav) a"
+          }
+        ],
+        "suggested_code": "/* Before */\n.header nav a { ... }\n/* After */\n:where(.header, nav) a { ... }"
+      },
+      "empirical_sources": [
+        "https://blog.logrocket.com/css-in-2026/",
+        "https://css-tricks.com"
+      ]
+    },
+    {
+      "name": "modern-css",
+      "description": "Generates code using 2026 CSS features like container queries, :has(), and clamp().",
+      "parameters": [
+        {
+          "name": "component",
+          "type": "string",
+          "description": "Name of the component to generate (e.g., 'card').",
+          "required": true
+        }
+      ],
+      "example_input": {
+        "component": "card"
+      },
+      "example_output": ".card { container-type: inline-size; }\n@container (max-width: 600px) { ... }",
+      "empirical_sources": [
+        "https://nerdy.dev/4-css-features-every-front-end-developer-should-know-in-2026",
+        "https://www.projectwallace.com/the-css-selection/2026"
+      ]
+    },
+    {
+      "name": "modern-layout",
+      "description": "Suggests flex/grid and container query solutions for a layout goal. Prefers responsive solutions with container queries where appropriate.",
+      "parameters": [
+        {
+          "name": "layout_description",
+          "type": "string",
+          "description": "Layout goal or mockup description (e.g., 'sidebar + main content', 'product grid').",
+          "required": true
+        }
+      ],
+      "example_input": {
+        "layout_description": "sidebar + main content, sidebar collapses on small screens"
+      },
+      "example_output": "CSS using flexbox, grid, container-type, @container, and logical properties (inline-size, margin-inline).",
+      "empirical_sources": [
+        "https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Container_Queries",
+        "https://css-tricks.com"
+      ]
+    },
+    {
+      "name": "design-tokens-css",
+      "description": "Converts design tokens (colors, spacing, typography) into CSS custom properties with optional dark/light theme support.",
+      "parameters": [
+        {
+          "name": "tokens",
+          "type": "string",
+          "description": "Design tokens as JSON or spec (e.g., design-tokens.json path or inline JSON).",
+          "required": true
+        }
+      ],
+      "example_input": {
+        "tokens": "templates/design-tokens.json"
+      },
+      "example_output": ":root { --color-primary: #2563eb; --space-2: 0.5rem; } [data-theme='dark'] { ... }",
+      "empirical_sources": [
+        "https://developer.mozilla.org/en-US/docs/Web/CSS/--*",
+        "https://www.w3.org/TR/css-variables-1/"
+      ]
+    },
+    {
+      "name": "cascade-layers",
+      "description": "Restructures CSS using @layer (e.g., reset, base, components, utilities) for a clear cascade order.",
+      "parameters": [
+        {
+          "name": "css_content",
+          "type": "string",
+          "description": "CSS content or path to file to reorganize.",
+          "required": true
+        }
+      ],
+      "example_input": {
+        "css_content": "path/to/styles.css"
+      },
+      "example_output": "@layer reset, base, components, utilities; ... layered CSS with explanation.",
+      "empirical_sources": [
+        "https://developer.mozilla.org/en-US/docs/Web/CSS/@layer",
+        "https://www.w3.org/TR/css-cascade-5/#layering"
+      ]
+    }
+  ]
+}

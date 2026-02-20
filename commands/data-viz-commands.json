@@ -1,0 +1,124 @@
+{
+  "category": "Data Visualization",
+  "name": "data-viz-commands",
+  "version": "1.0.0",
+  "description": "Data visualization and Tufte-style chart commands",
+  "commands": [
+    {
+      "name": "viz-chart-type",
+      "description": "Recommend the most appropriate chart type from data structure and message. Justify using Tufte principles (data-ink, avoid chartjunk).",
+      "parameters": [
+        {
+          "name": "data_structure",
+          "type": "string",
+          "description": "Description or schema of the data (e.g., time series, categories, distribution).",
+          "required": true
+        },
+        {
+          "name": "message_or_goal",
+          "type": "string",
+          "description": "What to convey: comparison, trend, distribution, part-to-whole, etc.",
+          "required": true
+        }
+      ],
+      "example_input": {
+        "data_structure": "Monthly sales for 12 months",
+        "message_or_goal": "Show trend over time"
+      },
+      "example_output": {
+        "chart_type": "line or small multiples",
+        "rationale": "Trend benefits from continuous axis; Tufte favors high data-ink ratio.",
+        "caveats": "Avoid 3D or decorative elements."
+      },
+      "empirical_sources": [
+        "Tufte, The Visual Display of Quantitative Information",
+        "docs/tufte-principles.md"
+      ]
+    },
+    {
+      "name": "viz-tufte-audit",
+      "description": "Audit a chart against Tufte principles: data-ink ratio, lie factor, chartjunk, small multiples, clear labeling.",
+      "parameters": [
+        {
+          "name": "chart_description_or_code_or_image",
+          "type": "string",
+          "description": "Chart description, code (e.g., SVG/JS), or image reference.",
+          "required": true
+        }
+      ],
+      "example_input": {
+        "chart_description_or_code_or_image": "Bar chart with 3D effect and heavy grid"
+      },
+      "example_output": {
+        "audit_results": ["Low data-ink: 3D and grid add no data", "Chartjunk: decorative effects"],
+        "improvement_suggestions": ["Use 2D bars; reduce grid to minimal ticks"]
+      },
+      "empirical_sources": [
+        "Tufte, The Visual Display of Quantitative Information",
+        "docs/tufte-principles.md"
+      ]
+    },
+    {
+      "name": "viz-small-multiples",
+      "description": "Design a small-multiples visualization: same scale and axis across panels, one variable varied per panel. Output layout, axis/label plan, and data mapping.",
+      "parameters": [
+        {
+          "name": "dataset_description",
+          "type": "string",
+          "description": "Description of the dataset.",
+          "required": true
+        },
+        {
+          "name": "variables_to_compare",
+          "type": "string",
+          "description": "Variables to compare across panels (e.g., region, year).",
+          "required": true
+        }
+      ],
+      "example_input": {
+        "dataset_description": "Sales by region and quarter",
+        "variables_to_compare": "region (one panel per region)"
+      },
+      "example_output": {
+        "layout_spec": "2x2 or 4x1 grid, same y-scale",
+        "encoding_spec": "Line or bar per panel; axis/label plan",
+        "example_svg_or_code": "Reference utils/tufte-chart.js, templates/small-multiples.svg"
+      },
+      "empirical_sources": [
+        "Tufte, The Visual Display of Quantitative Information",
+        "utils/tufte-chart.js"
+      ]
+    },
+    {
+      "name": "viz-lie-factor",
+      "description": "Compute lie factor: (size of effect in graphic) / (size of effect in data). Flag if > 1.05 or < 0.95 and suggest corrections.",
+      "parameters": [
+        {
+          "name": "chart_spec_or_description",
+          "type": "string",
+          "description": "Chart specification or description.",
+          "required": true
+        },
+        {
+          "name": "underlying_data_values",
+          "type": "string",
+          "description": "Relevant data values used in the chart.",
+          "required": true
+        }
+      ],
+      "example_input": {
+        "chart_spec_or_description": "Bar chart where bar length doubles",
+        "underlying_data_values": "Values increased by 10%"
+      },
+      "example_output": {
+        "lie_factor": "~2.0 (distortion)",
+        "distortion_verdict": "Visual effect exaggerates data change",
+        "fix_suggestions": "Scale bar length to match 10% data increase"
+      },
+      "empirical_sources": [
+        "Tufte, The Visual Display of Quantitative Information",
+        "docs/tufte-principles.md"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "name": "metis",
+  "version": "1.0.0",
+  "description": "Metis: research-backed UX/UI and frontend package — commands, utilities, templates, and docs for AI agentic tools",
+  "type": "module",
+  "scripts": {
+    "audit:css": "node utils/css-audit.js",
+    "scaffold": "node utils/atomic-scaffold.js",
+    "audit:baymard": "node utils/baymard-audit.js"
+  },
+  "keywords": ["metis", "ux", "ui", "css", "atomic-design", "ecommerce", "data-viz", "tufte", "baymard", "cursor", "ai"],
+  "license": "MIT"
+}

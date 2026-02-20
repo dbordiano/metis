@@ -1,0 +1,104 @@
+{
+  "category": "Atomic Design",
+  "name": "atomic-design-commands",
+  "version": "1.0.0",
+  "description": "Atomic Design methodology commands for AI agents",
+  "commands": [
+    {
+      "name": "atomic-scaffold",
+      "description": "Generate folder and stub files for an atom, molecule, or organism. Follows Brad Frost's hierarchy: atoms are single elements, molecules combine atoms, organisms combine molecules.",
+      "parameters": [
+        {
+          "name": "component_name",
+          "type": "string",
+          "description": "Name of the component (e.g., Button, ProductCard).",
+          "required": true
+        },
+        {
+          "name": "level",
+          "type": "string",
+          "description": "Level: atom | molecule | organism.",
+          "required": true
+        }
+      ],
+      "example_input": {
+        "component_name": "Button",
+        "level": "molecule"
+      },
+      "example_output": {
+        "folder_structure": "molecules/button/button.jsx, index.js",
+        "component_code": "Stub using design tokens (var(--color-primary), var(--space-2))."
+      },
+      "empirical_sources": [
+        "https://atomicdesign.bradfrost.com/",
+        "https://bradfrost.com/blog/post/atomic-web-design/"
+      ]
+    },
+    {
+      "name": "atomic-tokens-check",
+      "description": "Verify components use design tokens instead of hardcoded colors, spacing, font sizes, or shadows.",
+      "parameters": [
+        {
+          "name": "component_code_or_paths",
+          "type": "string",
+          "description": "Component code or file path(s) to scan.",
+          "required": true
+        }
+      ],
+      "example_input": {
+        "component_code_or_paths": "components/atoms/button/button.jsx"
+      },
+      "example_output": {
+        "violations": [{ "line": 5, "value": "#2563eb", "fix": "var(--color-primary)" }],
+        "suggested_fixes": "Replace hardcoded values with token references."
+      },
+      "empirical_sources": [
+        "https://atomicdesign.bradfrost.com/chapter-2/",
+        "https://www.w3.org/TR/css-variables-1/"
+      ]
+    },
+    {
+      "name": "atomic-composition",
+      "description": "Suggest how to compose atoms into molecules or organisms from a UI description or mockup.",
+      "parameters": [
+        {
+          "name": "ui_description_or_mockup",
+          "type": "string",
+          "description": "Description of the UI or reference to a mockup.",
+          "required": true
+        }
+      ],
+      "example_input": {
+        "ui_description_or_mockup": "Product card with image, title, price, and Add to cart button"
+      },
+      "example_output": {
+        "atoms_list": ["Image", "Text", "Button"],
+        "molecules_list": ["PriceDisplay", "CardActions"],
+        "organisms_list": ["ProductCard"],
+        "composition_tree": "ProductCard > [Image, PriceDisplay, CardActions(Button)]"
+      },
+      "empirical_sources": [
+        "https://atomicdesign.bradfrost.com/chapter-2/"
+      ]
+    },
+    {
+      "name": "atomic-document",
+      "description": "Generate style-guide documentation for an Atomic component: purpose, props, usage, tokens.",
+      "parameters": [
+        {
+          "name": "component_code",
+          "type": "string",
+          "description": "Component source code to document.",
+          "required": true
+        }
+      ],
+      "example_input": {
+        "component_code": "path/to/Button.jsx or inline code"
+      },
+      "example_output": "Markdown with purpose, props (types/defaults), usage example, tokens used.",
+      "empirical_sources": [
+        "https://atomicdesign.bradfrost.com/chapter-5/"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,116 @@
+{
+  "category": "Motion",
+  "name": "motion-commands",
+  "version": "1.0.0",
+  "description": "Motion and animation commands for accessible UX",
+  "commands": [
+    {
+      "name": "motion-reduced",
+      "description": "Ensure animations respect prefers-reduced-motion: reduce. Output updated code and checklist (disable, reduce, or instant transition).",
+      "parameters": [
+        {
+          "name": "css_or_js_with_animations",
+          "type": "string",
+          "description": "CSS or JavaScript containing animations.",
+          "required": true
+        }
+      ],
+      "example_input": {
+        "css_or_js_with_animations": ".menu { transition: transform 0.3s ease; }"
+      },
+      "example_output": {
+        "updated_code": "@media (prefers-reduced-motion: reduce) { .menu { transition: none; } }",
+        "reduced_motion_checklist": ["prefers-reduced-motion media query added"]
+      },
+      "empirical_sources": [
+        "https://developer.mozilla.org/en-US/docs/Web/CSS/@media/prefers-reduced-motion",
+        "https://www.w3.org/WAI/WCAG21/Understanding/animation-from-interactions.html"
+      ]
+    },
+    {
+      "name": "motion-duration-curve",
+      "description": "Suggest duration (ms) and easing for UI motion. Keep durations short (150–300ms); ease-out for enter, ease-in for exit.",
+      "parameters": [
+        {
+          "name": "motion_type",
+          "type": "string",
+          "description": "Type: micro-interaction | page-transition | loading | expand-collapse.",
+          "required": true
+        },
+        {
+          "name": "context",
+          "type": "string",
+          "description": "Context: web | mobile.",
+          "required": false
+        }
+      ],
+      "example_input": {
+        "motion_type": "micro-interaction",
+        "context": "web"
+      },
+      "example_output": {
+        "duration_ms": 200,
+        "easing": "ease-out",
+        "rationale": "Quick feedback without feeling sluggish"
+      },
+      "empirical_sources": [
+        "https://www.nngroup.com/articles/animation-usability/",
+        "Material Design motion guidelines"
+      ]
+    },
+    {
+      "name": "motion-choreography",
+      "description": "Propose stagger and sequence for multiple elements (e.g., list items, cards). Include stagger formula, order, and accessibility notes.",
+      "parameters": [
+        {
+          "name": "element_list",
+          "type": "string",
+          "description": "Description of elements to animate (e.g., 5 list items, card grid).",
+          "required": true
+        },
+        {
+          "name": "trigger",
+          "type": "string",
+          "description": "Trigger: mount | scroll | click.",
+          "required": false
+        }
+      ],
+      "example_input": {
+        "element_list": "6 card components",
+        "trigger": "mount"
+      },
+      "example_output": {
+        "stagger_spec": "index * 50ms, max 300ms",
+        "code_snippet": "CSS or JS snippet",
+        "accessibility_notes": "Respect prefers-reduced-motion; avoid vestibular stress"
+      },
+      "empirical_sources": [
+        "https://www.w3.org/WAI/WCAG21/Understanding/animation-from-interactions.html",
+        "https://developer.mozilla.org/en-US/docs/Web/CSS/@media/prefers-reduced-motion"
+      ]
+    },
+    {
+      "name": "motion-audit",
+      "description": "Audit animation for: prefers-reduced-motion support, auto-play duration/controls, flash rate, use of transform/opacity for performance.",
+      "parameters": [
+        {
+          "name": "animation_code_or_description",
+          "type": "string",
+          "description": "Animation code or description to audit.",
+          "required": true
+        }
+      ],
+      "example_input": {
+        "animation_code_or_description": "CSS keyframes and transition blocks"
+      },
+      "example_output": {
+        "audit_results": ["Missing prefers-reduced-motion", "Auto-play > 5s without pause"],
+        "fixes": "Concrete code or spec changes"
+      },
+      "empirical_sources": [
+        "https://www.w3.org/WAI/WCAG21/Understanding/animation-from-interactions.html",
+        "https://developer.mozilla.org/en-US/docs/Web/CSS/@media/prefers-reduced-motion"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,119 @@
+{
+  "category": "Cognitive Bias",
+  "name": "cognitive-bias-commands",
+  "version": "1.0.0",
+  "description": "Cognitive bias awareness and mitigation commands for UX",
+  "commands": [
+    {
+      "name": "bias-checklist",
+      "description": "Run a user flow or UI copy against common cognitive bias risks (anchoring, choice overload, confirmation bias, decoy, framing, loss aversion, social proof, scarcity). Returns risks and mitigations.",
+      "parameters": [
+        {
+          "name": "user_flow_description",
+          "type": "string",
+          "description": "Description of the user flow or journey.",
+          "required": true
+        },
+        {
+          "name": "ui_copy_or_screens",
+          "type": "string",
+          "description": "Relevant UI copy or screen descriptions.",
+          "required": false
+        }
+      ],
+      "example_input": {
+        "user_flow_description": "Checkout: cart → shipping → payment → confirmation",
+        "ui_copy_or_screens": "Limited stock! Only 2 left."
+      },
+      "example_output": {
+        "bias_risks": [{ "bias": "scarcity", "risk": "Fake urgency undermines trust" }],
+        "mitigations": ["Show real inventory or remove scarcity copy"],
+        "priority": "high"
+      },
+      "empirical_sources": [
+        "https://www.nngroup.com/articles/persuasion/",
+        "https://www.nngroup.com/articles/dark-patterns/"
+      ]
+    },
+    {
+      "name": "bias-choice-architecture",
+      "description": "Improve choice presentation (defaults, grouping, progressive disclosure) and flag dark patterns.",
+      "parameters": [
+        {
+          "name": "choice_context",
+          "type": "string",
+          "description": "Context where the user must choose (e.g., plan selection, add-ons).",
+          "required": true
+        },
+        {
+          "name": "current_options_or_ui",
+          "type": "string",
+          "description": "Current options or UI description.",
+          "required": false
+        }
+      ],
+      "example_input": {
+        "choice_context": "Subscription plan selection",
+        "current_options_or_ui": "3 tiers, middle one pre-selected"
+      },
+      "example_output": {
+        "recommendations": ["Clear default; allow easy switch; show comparison table"],
+        "dark_pattern_warnings": ["Avoid decoy tier that only makes middle option look better"]
+      },
+      "empirical_sources": [
+        "https://www.nngroup.com/articles/choice-architecture/",
+        "Cialdini, Influence"
+      ]
+    },
+    {
+      "name": "bias-copy-review",
+      "description": "Review copy for framing, anchoring, and scarcity/social proof language. Suggest neutral or user-empowering alternatives.",
+      "parameters": [
+        {
+          "name": "copy_text",
+          "type": "string",
+          "description": "Copy to review.",
+          "required": true
+        },
+        {
+          "name": "context",
+          "type": "string",
+          "description": "Context: cta | error | onboarding | etc.",
+          "required": false
+        }
+      ],
+      "example_input": {
+        "copy_text": "Don't miss out! 10,000+ users signed up.",
+        "context": "cta"
+      },
+      "example_output": {
+        "identified_biases": ["scarcity", "social proof"],
+        "revised_copy_suggestions": ["Join 10,000+ users" or neutral CTA without urgency"]
+      },
+      "empirical_sources": [
+        "https://www.nngroup.com/articles/framing/",
+        "docs/cognitive-bias-codex.md"
+      ]
+    },
+    {
+      "name": "bias-mitigation-table",
+      "description": "Return a concise table: Bias | UX risk | Mitigation for requested biases or product type. Uses cognitive-bias-codex.",
+      "parameters": [
+        {
+          "name": "bias_names_or_product_type",
+          "type": "string",
+          "description": "Bias names (e.g., anchoring, scarcity) or product type (e.g., ecommerce, SaaS).",
+          "required": true
+        }
+      ],
+      "example_input": {
+        "bias_names_or_product_type": "ecommerce"
+      },
+      "example_output": "| Bias | UX risk | Mitigation | ... (markdown table)",
+      "empirical_sources": [
+        "docs/cognitive-bias-codex.md",
+        "https://www.nngroup.com/articles/dark-patterns/"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,111 @@
+{
+  "category": "Ecommerce UX",
+  "name": "ecommerce-ux-commands",
+  "version": "1.0.0",
+  "description": "Ecommerce UX and Baymard-style guideline commands",
+  "commands": [
+    {
+      "name": "ecom-product-grid",
+      "description": "Audit product grid/listing against Baymard-style guidelines: image link, visible price, clear CTA, rating/availability, structure.",
+      "parameters": [
+        {
+          "name": "html_or_url",
+          "type": "string",
+          "description": "HTML content, file path, or URL of the product listing.",
+          "required": true
+        },
+        {
+          "name": "guideline_set",
+          "type": "string",
+          "description": "Optional: baymard_lite | full.",
+          "required": false
+        }
+      ],
+      "example_input": {
+        "html_or_url": "templates/product-grid.html",
+        "guideline_set": "baymard_lite"
+      },
+      "example_output": {
+        "checklist_results": "Image linked, price visible, CTA present, semantic structure",
+        "fix_suggestions": "List of gaps and HTML/structure fixes"
+      },
+      "empirical_sources": [
+        "https://baymard.com/blog/ecommerce-ux-benchmarks",
+        "docs/baymard-guidelines.md"
+      ]
+    },
+    {
+      "name": "ecom-cart-checkout",
+      "description": "Audit cart and checkout for line items, totals, edit/remove, guest checkout, progress, and trust signals.",
+      "parameters": [
+        {
+          "name": "flow_description_or_html",
+          "type": "string",
+          "description": "Description of the flow or HTML/path for cart and checkout.",
+          "required": true
+        }
+      ],
+      "example_input": {
+        "flow_description_or_html": "Cart page with line items and Checkout CTA"
+      },
+      "example_output": {
+        "checklist_results": "Pass/fail per guideline",
+        "priority_fixes": "Ordered list of high-impact fixes"
+      },
+      "empirical_sources": [
+        "https://baymard.com/blog/checkout-ux",
+        "docs/baymard-guidelines.md"
+      ]
+    },
+    {
+      "name": "ecom-trust-signals",
+      "description": "Suggest trust signals (security badges, return policy, reviews, guarantees) and where to place them (listing, PDP, cart, checkout).",
+      "parameters": [
+        {
+          "name": "page_type",
+          "type": "string",
+          "description": "Page or context: listing | PDP | cart | checkout.",
+          "required": true
+        },
+        {
+          "name": "current_content",
+          "type": "string",
+          "description": "Current content or layout description.",
+          "required": false
+        }
+      ],
+      "example_input": {
+        "page_type": "checkout",
+        "current_content": "Payment form only"
+      },
+      "example_output": {
+        "trust_signal_list": ["Secure checkout badge", "Return policy link", "Contact visibility"],
+        "placement_recommendations": "Near payment, footer, header"
+      },
+      "empirical_sources": [
+        "https://baymard.com/blog/ecommerce-trust",
+        "docs/baymard-guidelines.md"
+      ]
+    },
+    {
+      "name": "ecom-baymard-summary",
+      "description": "Return a concise summary of Baymard-style ecommerce UX guidelines for a topic (product listing, PDP, cart, checkout, search, filters).",
+      "parameters": [
+        {
+          "name": "topic",
+          "type": "string",
+          "description": "Topic: product listing | PDP | cart | checkout | search | filters.",
+          "required": true
+        }
+      ],
+      "example_input": {
+        "topic": "product listing"
+      },
+      "example_output": "Markdown summary with key checklist items and source note.",
+      "empirical_sources": [
+        "https://baymard.com/",
+        "docs/baymard-guidelines.md"
+      ]
+    }
+  ]
+}
